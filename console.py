@@ -4,5 +4,5 @@ from PEPPSaF.Application.Console.ConsoleApplication import Application as Consol
 from PEPPSaF.Application.Tools.ToolApplication import Application as ToolApplication
 
 if __name__ == "__main__":
-    Application = ConsoleApplication(sys.argv) if len(sys.argv) == 0 else ToolApplication(sys.argv)
-    exit("Ended with code: " + str(Application.run()))
+    Application = ConsoleApplication(sys.argv) if len(sys.argv) > 1 else ToolApplication(sys.argv)
+    exit("Exited with code: " + str(Application.run()))

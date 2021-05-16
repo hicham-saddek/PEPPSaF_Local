@@ -21,15 +21,8 @@ class Application:
         return None
 
     def __init__(self, arguments=()):
-        print("Starting Application...")
-        print(" -- Loading configurations...")
         self.config_manager = ConfigManager()
-        print(" -- Configurations loaded via ConfigManager: OK")
-        print(" -- -- Collected: " + str(self.config().configurations))
-        print(" -- Loading arguments...")
         self.set_args(arguments)
-        print(" -- Arguments loaded : OK")
-        print(" -- -- Collected: " + str(self.get_args()))
 
     def run(self) -> int:
         print(str(self.get_args()))
