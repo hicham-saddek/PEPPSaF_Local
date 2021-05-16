@@ -1,4 +1,5 @@
 import json
+import os.path
 
 
 class ConfigManager:
@@ -6,6 +7,8 @@ class ConfigManager:
     configurations = {}
 
     def __init__(self):
+        self.path = os.path.realpath(self.path)
+        print("Opening path: " + self.path)
         with open(self.path) as file:
             data = json.load(file)
         self.set(data)
@@ -23,4 +26,4 @@ class ConfigManager:
 
     def save(self):
         with open(self.path, 'w') as file:
-            json.dump(self.configurations, file)
+            json.dump(self.configurations, file, sort_keys=True)
