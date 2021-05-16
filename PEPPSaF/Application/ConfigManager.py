@@ -8,7 +8,6 @@ class ConfigManager:
 
     def __init__(self):
         self.path = os.path.realpath(self.path)
-        print("Opening path: " + self.path)
         with open(self.path) as file:
             data = json.load(file)
         self.set(data)
@@ -17,7 +16,9 @@ class ConfigManager:
         self.configurations = configurations
         return self
 
-    def get_attribute(self, attribute: str):
+    def get_attribute(self, attribute: str, default=None):
+        if attribute not in self.configurations:
+            return default
         return self.configurations[attribute]
 
     def set_attribute(self, attribute: str, value):
