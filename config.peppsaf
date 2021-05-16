@@ -4,5 +4,18 @@
     "eth0",
     "wlan0"
   ],
-  "protocol": "TCP"
+  "mqtt_clients": {
+    "transport": "tcp",
+    "clean_session": true,
+    "port": 1883,
+    "host": "test.mosquitto.org",
+    "keepalive": 60,
+    "client_id": "NODE-01-CLIENT"
+  },
+  "central_communication": {
+    "protocol": null,
+    "transport": "tcp",
+    "port": 80
+  },
+  "sleep": 0.002
 }
