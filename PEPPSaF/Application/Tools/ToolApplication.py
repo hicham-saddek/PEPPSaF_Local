@@ -1,5 +1,5 @@
 from PEPPSaF.Application.Application import Application as BaseApplication
-from PEPPSaF.IPDetector import IPDetector
+from PEPPSaF.Concerns.IPDetector import IPDetector
 
 
 class Application(BaseApplication):
