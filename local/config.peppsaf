@@ -1,0 +1,8 @@
+{
+  "hostname": "local-node-01.peppsaf",
+  "interfaces": [
+    "eth0",
+    "wlan0"
+  ],
+  "protocol": "TCP"
+}
