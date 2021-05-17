@@ -1,4 +1,5 @@
 import os
+from time import sleep
 
 from PEPPSaF.System.ConfigManager import ConfigManager
 
@@ -33,3 +34,6 @@ class Application:
 
     def config(self) -> ConfigManager:
         return self.config_manager
+
+    def sleep(self, default: int = 0.002):
+        sleep(self.config().get_attribute('sleep', default))
