@@ -5,7 +5,7 @@ from paho.mqtt.client import Client as MQTTClient, Client
 from PEPPSaF.Application.ConfigManager import ConfigManager
 
 
-class SAFDeckManager:
+class MQTTSAFDeckManager:
     host: str = "test.mosquitto.org"
     port: int = 1883
     keepalive: int = 60
@@ -102,11 +102,14 @@ class SAFDeckManager:
         return json.dumps(self.to_obj())
 
     def connect(self):
-        self.get_client().connect(
-            host=self.get_host(),
-            port=self.get_port(),
-            keepalive=self.get_keepalive()
-        )
+        try:
+            self.get_client().connect(
+                host=self.get_host(),
+                port=self.get_port(),
+                keepalive=self.get_keepalive()
+            )
+        except ConnectionRefusedError:
+            exit("Too many attempts to the broker, please change the configurations")
 
     def __str__(self):
         return self.to_json()

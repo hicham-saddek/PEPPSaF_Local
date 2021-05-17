@@ -1,17 +1,17 @@
 import json
 
-from PEPPSaF.Concerns.SAFDeckManager import SAFDeckManager
+from PEPPSaF.Concerns.MQTTSAFDeckManager import MQTTSAFDeckManager
 
 
-class Sensor:
+class mqtt_sensor:
     name: str = None
     topic: str = None
-    deck: SAFDeckManager = None
+    deck: MQTTSAFDeckManager = None
     value: str = None
     charset: str = "utf-8"
 
     def guess_name(self) -> str:
-        return self.name if self.name is not None else str(type(self).__name__).strip('Sensor')
+        return self.name if self.name is not None else str(type(self).__name__)[:-len('Sensor')]
 
     def set_name(self, name: str):
         self.name = name
@@ -20,7 +20,7 @@ class Sensor:
     def __init__(self, topic: str = None, name: str = None):
         self.set_topic(topic if topic is not None else self.get_topic())
         self.set_name(name if name is not None else self.get_name())
-        self.set_deck(SAFDeckManager())
+        self.set_deck(MQTTSAFDeckManager())
         self.set_on_message()
         self.get_deck().connect()
         self.get_deck().get_client().loop_start()
@@ -33,11 +33,11 @@ class Sensor:
 
         self.get_deck().get_client().on_message = on_message
 
-    def set_deck(self, deck: SAFDeckManager):
+    def set_deck(self, deck: MQTTSAFDeckManager):
         self.deck = deck
         return self
 
-    def get_deck(self) -> SAFDeckManager:
+    def get_deck(self) -> MQTTSAFDeckManager:
         return self.deck
 
     def get_name(self) -> str:
@@ -47,7 +47,7 @@ class Sensor:
         self.topic = topic
         return self
 
-    def get_topic(self):
+    def get_topic(self) -> str:
         return self.topic
 
     def subscribe(self):
