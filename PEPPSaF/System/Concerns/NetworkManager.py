@@ -1,4 +1,4 @@
-import socket
+import requests
 
 from PEPPSaF.System.Concerns.Data import Data
 from PEPPSaF.System.ConfigManager import ConfigManager
@@ -18,19 +18,20 @@ class NetworkManager:
             exit("Missing interfaces configurations")
         for interface in self.interfaces:
             interface = self.interfaces[interface]
-            if "host" not in interface or "port" not in interface:
-                exit("Interfaces should have a host and port value assigned")
-            self.send_to(str(interface["host"]), int(interface["port"]), data)
+            if "host" not in interface or "port" not in interface or "uri" not in interface:
+                exit("Interfaces should have a host and port and uri value assigned")
+            try:
+                request = self.send_to(str(interface["host"]), int(interface["port"]), str(interface["uri"]), data)
+                if request.status_code < 200 or request.status_code > 400:
+                    print("Failed to send Data: ", data.to_json() + " with code: " + str(request.status_code))
+                else:
+                    print("Received from server(" + interface["host"] + ":" + str(
+                        interface["port"]) + ") received: " + str(
+                        request.json()))
+            except requests.exceptions.ConnectionError as ce:
+                print("Connection error, trying again...")
 
-    def send_to(self, host: str, port: int, data: Data):
-        sock = socket.socket()
-        data.mark_as_sent()
-        try:
-            sock.connect((host, port))
-            byt = data.to_json().encode(self.encoding)
-            sock.send(byt)
-        except BaseException:
-            exit(
-                "Something went wrong! cannot reach " + host + ":" + str(port) + " we tried to send: " + data.to_json())
-        finally:
-            sock.close()
+    @staticmethod
+    def send_to(host: str, port: int, uri: str, data: Data):
+        request = requests.post(host + ":" + str(port) + "/" + uri, {"data": data.mark_as_sent().to_json()})
+        return request
