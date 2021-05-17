@@ -1,9 +1,15 @@
 import sys
 
-from PEPPSaF.Application.Console.ConsoleApplication import Application as ConsoleApplication
-from PEPPSaF.Application.Tools.ToolApplication import Application as ToolApplication
+from PEPPSaF.Application.Console import Application as Console
+from PEPPSaF.System.Tools.ToolApplication import Application as Tools
 
 if __name__ == "__main__":
-    Application = ToolApplication(sys.argv) if len(sys.argv) > 2 else ConsoleApplication(sys.argv)
-    print("|- --- --- --- -| P E P P S a F |- --- --- --- -|")
-    exit("Exited with code: " + str(Application.run()))
+    if 1 in sys.argv and sys.argv[1] == "tools":
+        print("|- --- --- --- -| P E P P S a F |- --- --- --- -|")
+        Application = Tools(sys.argv)
+        exit("Exited with code: " + str(Application.run()))
+    elif 1 in sys.argv and  sys.argv[1] == "console":
+        print("|- --- --- --- -| P E P P S a F |- --- --- --- -|")
+        Application = Console(sys.argv)
+        exit("Exited with code: " + str(Application.run()))
+    exit("Missing running method, please type 'console.py tools' or 'console.py console' to start the PEPPSaF local")
