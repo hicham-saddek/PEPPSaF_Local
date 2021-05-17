@@ -1,5 +1,5 @@
-from PEPPSaF.System.Application import Application as BaseApplication
 from PEPPSaF.Concerns.IPDetector import IPDetector
+from PEPPSaF.System.Application import Application as BaseApplication
 
 
 class Application(BaseApplication):
@@ -34,4 +34,5 @@ class Application(BaseApplication):
                 print(str(IPDetector.get_interfaces_with_ip(True)))
             if menu == 4:
                 print(str(IPDetector.get_interfaces_with_host_and_ip(True)))
+            input("Type any key to go back to the menu")
             self.clear_screen()
