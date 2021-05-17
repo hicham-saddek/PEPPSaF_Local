@@ -1,7 +1,7 @@
 import json
 import time
 
-from PEPPSaF.Concerns.Sensor import Sensor
+from PEPPSaF.System.Concerns.Sensor import Sensor
 
 
 class Data:

@@ -37,7 +37,6 @@ class OPCUASAFDeckManager:
                                                                  "timeout"] is not None else self.timeout
         self.build_url()
         self.build_client()
-        self.connect()
 
     def build_url(self) -> str:
         self.url = self.host + ":" + str(self.port) + "/" + self.uri
@@ -48,7 +47,8 @@ class OPCUASAFDeckManager:
         return self.client
 
     def connect(self):
-        return self.client.connect()
+        self.client.connect()
+        return True
 
     def disconnect(self):
         return self.client.disconnect()
@@ -64,6 +64,3 @@ class OPCUASAFDeckManager:
 
     def get_children(self):
         return self.root().get_children()
-
-    def __delete__(self, instance):
-        self.disconnect()

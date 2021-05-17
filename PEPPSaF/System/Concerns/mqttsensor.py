@@ -1,7 +1,7 @@
 import json
 
-from PEPPSaF.Concerns.MQTTSAFDeckManager import MQTTSAFDeckManager
-from PEPPSaF.Concerns.Sensor import Sensor
+from PEPPSaF.System.Concerns.MQTTSAFDeckManager import MQTTSAFDeckManager
+from PEPPSaF.System.Concerns.Sensor import Sensor
 
 
 class MqttSensor(Sensor):
@@ -23,8 +23,12 @@ class MqttSensor(Sensor):
         self.set_topic(topic if topic is not None else self.get_topic())
         self.set_deck(MQTTSAFDeckManager())
         self.set_on_message()
-        self.get_deck().connect()
+        self.connect()
         self.get_deck().get_client().loop_start()
+
+    def connect(self):
+        super(MqttSensor, self).connect()
+        self.get_deck().connect()
 
     def set_on_message(self):
         def on_message(client, userdata, message):
@@ -71,6 +75,3 @@ class MqttSensor(Sensor):
 
     def disconnect(self):
         self.get_deck().get_client().loop_stop()
-
-    def __delete__(self, instance):
-        self.disconnect()

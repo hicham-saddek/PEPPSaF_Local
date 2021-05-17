@@ -1,4 +1,4 @@
-from PEPPSaF.Concerns.OpcuaSensor import OpcuaSensor
+from PEPPSaF.System.Concerns.OpcuaSensor import OpcuaSensor
 
 
 class YellowLightSensor(OpcuaSensor):

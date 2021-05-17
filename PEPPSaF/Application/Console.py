@@ -5,4 +5,4 @@ from PEPPSaF.System.Console.ConsoleApplication import Application as BaseApplica
 
 class Application(BaseApplication):
     protocol = "opcua"
-    sensors_opcua = [YellowLightSensor, RedLightSensor]
+    sensors = [YellowLightSensor, RedLightSensor]

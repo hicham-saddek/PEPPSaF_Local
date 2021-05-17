@@ -1,4 +1,4 @@
-from PEPPSaF.Concerns.mqttsensor import MqttSensor
+from PEPPSaF.System.Concerns.mqttsensor import MqttSensor
 
 
 class GarageLightMqtt(MqttSensor):

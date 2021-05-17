@@ -113,3 +113,6 @@ class MQTTSAFDeckManager:
 
     def __str__(self):
         return self.to_json()
+
+    def disconnect(self):
+        self.get_client().disconnect()

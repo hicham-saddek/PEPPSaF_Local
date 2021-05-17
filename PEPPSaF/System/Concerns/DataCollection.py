@@ -1,10 +1,13 @@
 import json
 
-from PEPPSaF.Concerns.Data import Data
+from PEPPSaF.System.Concerns.Data import Data
 
 
 class DataCollection:
     collection = []
+
+    def __init__(self):
+        self.collection = []
 
     def add(self, data: Data) -> list:
         self.collection.append(data)
@@ -18,6 +21,10 @@ class DataCollection:
         for data in self.collection:
             collection.append(data.to_obj())
         return json.dumps(collection)
+
+    def empty(self):
+        self.collection = []
+        return self
 
     def __str__(self) -> str:
         return self.to_json()
