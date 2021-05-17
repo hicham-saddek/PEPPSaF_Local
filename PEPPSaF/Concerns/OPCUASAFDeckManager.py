@@ -2,7 +2,7 @@ import json
 
 from opcua import Client
 
-from PEPPSaF.Application.ConfigManager import ConfigManager
+from PEPPSaF.System.ConfigManager import ConfigManager
 
 
 class OPCUASAFDeckManager:

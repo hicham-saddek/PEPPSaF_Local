@@ -2,7 +2,7 @@ import json
 
 from paho.mqtt.client import Client as MQTTClient, Client
 
-from PEPPSaF.Application.ConfigManager import ConfigManager
+from PEPPSaF.System.ConfigManager import ConfigManager
 
 
 class MQTTSAFDeckManager:

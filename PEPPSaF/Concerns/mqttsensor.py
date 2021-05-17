@@ -1,9 +1,10 @@
 import json
 
 from PEPPSaF.Concerns.MQTTSAFDeckManager import MQTTSAFDeckManager
+from PEPPSaF.Concerns.Sensor import Sensor
 
 
-class mqtt_sensor:
+class MqttSensor(Sensor):
     name: str = None
     topic: str = None
     deck: MQTTSAFDeckManager = None
@@ -18,8 +19,8 @@ class mqtt_sensor:
         return self
 
     def __init__(self, topic: str = None, name: str = None):
+        super().__init__(name)
         self.set_topic(topic if topic is not None else self.get_topic())
-        self.set_name(name if name is not None else self.get_name())
         self.set_deck(MQTTSAFDeckManager())
         self.set_on_message()
         self.get_deck().connect()
@@ -39,9 +40,6 @@ class mqtt_sensor:
 
     def get_deck(self) -> MQTTSAFDeckManager:
         return self.deck
-
-    def get_name(self) -> str:
-        return self.guess_name()
 
     def set_topic(self, topic: str):
         self.topic = topic
