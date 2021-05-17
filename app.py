@@ -12,4 +12,4 @@ if __name__ == "__main__":
         print("|- --- --- --- -| P E P P S a F |- --- --- --- -|")
         Application = Console(sys.argv)
         exit("Exited with code: " + str(Application.run()))
-    exit("Missing running method, please type 'console.py tools' or 'console.py console' to start the PEPPSaF local")
+    exit("Missing running method, please type 'app.py tools' or 'app.py console' to start the PEPPSaF local")
