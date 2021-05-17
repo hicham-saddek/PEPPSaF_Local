@@ -9,6 +9,9 @@ class DataCollection:
     def __init__(self):
         self.collection = []
 
+    def items(self):
+        return self.collection
+
     def add(self, data: Data) -> list:
         self.collection.append(data)
         return self.collection
@@ -24,6 +27,10 @@ class DataCollection:
 
     def empty(self):
         self.collection = []
+        return self
+
+    def remove(self, data: Data):
+        self.collection.remove(data)
         return self
 
     def __str__(self) -> str:
