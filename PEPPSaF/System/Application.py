@@ -1,6 +1,7 @@
 import os
 from time import sleep
 
+from PEPPSaF.System.Concerns.NetworkManager import NetworkManager
 from PEPPSaF.System.ConfigManager import ConfigManager
 
 
@@ -8,6 +9,7 @@ class Application:
     arguments = ()
     clear_screen_commands = {"windows": "cls", "linux": "clear"}
     config_manager = None
+    net_manager: NetworkManager = None
 
     def set_args(self, arguments):
         self.arguments = arguments
@@ -23,6 +25,7 @@ class Application:
 
     def __init__(self, arguments=()):
         self.config_manager = ConfigManager()
+        self.net_manager = NetworkManager()
         self.set_args(arguments)
 
     def run(self) -> int:
