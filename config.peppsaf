@@ -1,12 +1,14 @@
 {
   "interfaces": {
-    "eth0": {
-      "host": "wired.central-node.peppsaf",
-      "port": 80
+    "wired-01": {
+      "host": "http://node-01.central.peppsaf",
+      "port": 5252,
+      "uri": "post-data"
     },
-    "wlan0": {
-      "host": "wireless.central-node.peppsaf",
-      "port": 80
+    "wireless-01": {
+      "host": "http://node-01.central.peppsaf",
+      "port": 5253,
+      "uri": "post-data"
     }
   },
   "mqtt_clients": {
