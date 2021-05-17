@@ -1,9 +1,14 @@
 {
-  "hostname": "local-node-01.peppsaf",
-  "interfaces": [
-    "eth0",
-    "wlan0"
-  ],
+  "interfaces": {
+    "eth0": {
+      "host": "wired.central-node.peppsaf",
+      "port": 80
+    },
+    "wlan0": {
+      "host": "wireless.central-node.peppsaf",
+      "port": 80
+    }
+  },
   "mqtt_clients": {
     "transport": "tcp",
     "clean_session": true,
@@ -17,11 +22,6 @@
     "host": "opc.tcp://MilebitsSystemsLaptops-HichamSADDEK",
     "uri": "OPCUA/SimulationServer",
     "timeout": 4
-  },
-  "central_communication": {
-    "protocol": null,
-    "transport": "tcp",
-    "port": 80
   },
   "sleep": 1
 }
