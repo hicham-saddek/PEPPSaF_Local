@@ -12,10 +12,16 @@
     "keepalive": 60,
     "client_id": "NODE-01-CLIENT"
   },
+  "opcua-clients": {
+    "port": 4840,
+    "host": "opc.tcp://MilebitsSystemsLaptops-HichamSADDEK",
+    "uri": "OPCUA/SimulationServer",
+    "timeout": 4
+  },
   "central_communication": {
     "protocol": null,
     "transport": "tcp",
     "port": 80
   },
-  "sleep": 0.002
+  "sleep": 1
 }
