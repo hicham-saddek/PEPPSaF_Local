@@ -1,4 +1,4 @@
-from PEPPSaF.Application.Application import Application as BaseApplication
+from PEPPSaF.System.Application import Application as BaseApplication
 from PEPPSaF.Concerns.IPDetector import IPDetector
 
 

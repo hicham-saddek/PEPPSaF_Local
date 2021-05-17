@@ -1,6 +1,6 @@
 import os
 
-from PEPPSaF.Application.ConfigManager import ConfigManager
+from PEPPSaF.System.ConfigManager import ConfigManager
 
 
 class Application:
