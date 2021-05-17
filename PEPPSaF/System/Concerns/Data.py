@@ -15,14 +15,18 @@ class Data:
 
     def mark_as_sent(self):
         self.sent_at = time.time()
+        return self
 
-    def to_obj(self) -> dict:
+    def to_obj(self):
         return {
             "sensor": self.sensor.get_name(),
             "value": self.sensor.get_value(),
             "arrived_at": int(self.arrived_at),
             "sent_at": int(self.sent_at)
         }
+
+    def __dict__(self):
+        return self.to_obj()
 
     def to_json(self):
         return json.dumps(self.to_obj())
