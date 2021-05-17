@@ -8,9 +8,7 @@ class ConfigManager:
 
     def __init__(self):
         self.path = os.path.realpath(self.path)
-        with open(self.path) as file:
-            data = json.load(file)
-        self.set(data)
+        self.set(json.load(open(self.path, )))
 
     def set(self, configurations):
         self.configurations = configurations
@@ -18,6 +16,7 @@ class ConfigManager:
 
     def get_attribute(self, attribute: str, default=None):
         if attribute not in self.configurations:
+            print("Doesnt have attribute: " + attribute)
             return default
         return self.configurations[attribute]
 
@@ -28,3 +27,9 @@ class ConfigManager:
     def save(self):
         with open(self.path, 'w') as file:
             json.dump(self.configurations, file, sort_keys=True)
+
+    def empty(self):
+        self.configurations = {}
+
+    def __del__(self):
+        self.empty()
