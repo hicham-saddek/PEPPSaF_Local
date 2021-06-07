@@ -8,7 +8,10 @@ class ConfigManager:
 
     def __init__(self):
         self.path = os.path.realpath(self.path)
-        self.set(json.load(open(self.path, )))
+        data = str()
+        with open(self.path, ) as file:
+            data = json.load(file)
+        self.set(data)
 
     def set(self, configurations):
         self.configurations = configurations

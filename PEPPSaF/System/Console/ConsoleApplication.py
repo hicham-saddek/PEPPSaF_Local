@@ -9,10 +9,6 @@ class Application(BaseApplication):
 
     def run(self):
         while True:
-            collection = DataCollection().empty()
             for sensor in self.sensors:
-                collection.add(Data(sensor()))
-            if collection.count() >= 1:
-                for data in collection.items():
-                    self.net_manager.send(data)
+                self.net_manager.send(Data(sensor()))
             self.sleep()

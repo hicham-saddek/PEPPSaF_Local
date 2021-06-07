@@ -13,17 +13,14 @@ class DataCollection:
         return self.collection
 
     def add(self, data: Data) -> list:
-        self.collection.append(data)
+        self.collection.append(data.to_obj())
         return self.collection
 
     def count(self) -> int:
         return len(self.collection)
 
     def to_json(self) -> str:
-        collection = []
-        for data in self.collection:
-            collection.append(data.to_obj())
-        return json.dumps(collection)
+        return json.dumps(self.collection)
 
     def empty(self):
         self.collection = []

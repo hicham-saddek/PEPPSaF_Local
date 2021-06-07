@@ -5,14 +5,10 @@ from PEPPSaF.System.Concerns.Sensor import Sensor
 
 
 class MqttSensor(Sensor):
-    name: str = None
     topic: str = None
     deck: MQTTSAFDeckManager = None
     value: str = None
     charset: str = "utf-8"
-
-    def guess_name(self) -> str:
-        return self.name if self.name is not None else str(type(self).__name__)[:-len('Sensor')]
 
     def set_name(self, name: str):
         self.name = name

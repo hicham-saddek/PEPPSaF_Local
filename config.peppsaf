@@ -1,14 +1,19 @@
 {
+  "hostname": "node-01.local.peppsaf",
   "interfaces": {
     "wired-01": {
-      "host": "http://node-01.central.peppsaf",
+      "protocol": "http",
+      "host": "wired.central.peppsaf",
       "port": 5252,
-      "uri": "post-data"
+      "uri": "api/post-wired",
+      "rate": 2
     },
     "wireless-01": {
-      "host": "http://node-01.central.peppsaf",
+      "protocol": "http",
+      "host": "wireless.central.peppsaf",
       "port": 5253,
-      "uri": "post-data"
+      "uri": "api/post-wireless",
+      "rate": 2
     }
   },
   "mqtt_clients": {
@@ -25,5 +30,5 @@
     "uri": "OPCUA/SimulationServer",
     "timeout": 4
   },
-  "sleep": 1
+  "sleep": 3
 }
